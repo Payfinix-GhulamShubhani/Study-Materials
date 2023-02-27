@@ -1,0 +1,138 @@
+@api_view(['POST'])
+def meterWiseReport(request):
+    orderby = request.data.get("orderby",)
+    data = request.data.get("filters",None)
+    
+    clause = ''
+    try:
+        if data:
+            clause +='WHERE '
+            for i,(key,value) in enumerate(data.items()):
+                if i>0:
+                    clause +='AND '
+                if key=='reading_date_db':
+                    print("key['month']",key)
+                    print("value['month']",value)
+                    month = value.split('-')[1]
+                    key='extract(Month from reading_date_db)'
+                    value=month
+                clause +=f" {key}='{value}'"
+            cursor = connection.cursor()
+            query = (f'''
+            SELECT m.{orderby} as location, count(m.id) as id,
+count(m.prsnt_mtr_status='Ok' or null) as Ok,
+CASE WHEN count(m.prsnt_mtr_status='Ok' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_mtr_status='Ok' or null) as float)
+			 / cast(count(m.id) as float) * 100)::numeric, 2) END as ok_persent,
+count(m.rdng_ocr_status='Passed' or null) as ocr_Passed,
+CASE WHEN count(m.rdng_ocr_status='Passed' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.rdng_ocr_status='Passed' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as ocr_Passed_persent,
+count(m.prsnt_rdng_ocr_excep='Parameters Incorrect' or null) as Parameters_Incorrect,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Parameters Incorrect' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Parameters Incorrect' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Parameters_Incorrect_Persent,
+count(m.prsnt_rdng_ocr_excep='Parameters Unclear' or null) as Parameters_Unclear,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Parameters Unclear' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Parameters Unclear' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Parameters_Unclear_Persent,
+count(m.prsnt_rdng_ocr_excep='Parameters Unavailable' or null) as Parameters_Unavailable,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Parameters Unavailable' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Parameters Unavailable' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Parameters_Unavailable_Persent,
+count(m.prsnt_rdng_ocr_excep='Image Invalid' or null) as Image_Invalid,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Image Invalid' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Image Invalid' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Image_Invalid_Persent,
+count(m.prsnt_rdng_ocr_excep='Image Unclear' or null) as Image_Unclear,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Image Unclear' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Image Unclear' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Image_Unclear_Persent,
+count(m.prsnt_rdng_ocr_excep='Image Spoofed' or null) as Image_Spoofed,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Image Spoofed' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Image Spoofed' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Image_Spoofed_Persent,
+count(m.prsnt_rdng_ocr_excep='Image Stain on Decimal' or null) as Image_Stain_OnDecimal,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Image Stain on Decimal' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Image Stain on Decimal' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Image_Stain_On_Decimal_persent,
+count(m.prsnt_rdng_ocr_excep='Meter Mismatched' or null) as Meter_Mismatched,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Meter Mismatched' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Meter Mismatched' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Meter_Mismatched_persent,
+count(m.prsnt_rdng_ocr_excep='Meter On Height' or null) as Meter_On_Height,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Meter On Height' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Meter On Height' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Meter_On_Height_Persent,
+count(m.prsnt_rdng_ocr_excep='Meter Dirty' or null) as Meter_Dirty,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Meter Dirty' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Meter Dirty' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Meter_Dirty_Persent,
+count(m.prsnt_rdng_ocr_excep='Meter Display Broken' or null) as Meter_Display_Broken,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Meter Display Broken' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Meter Display Broken' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Meter_Display_Broken_Persent,
+count(m.prsnt_rdng_ocr_excep='Daylight Reflection On Meter' or null) as Daylight_Reflection_On_Meter,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Daylight Reflection On Meter' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Daylight Reflection On Meter' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Daylight_Reflection_On_Meter_Persent,
+count(m.prsnt_rdng_ocr_excep='Backlight Reflection' or null) as Backlight_Reflection,
+CASE WHEN count(m.prsnt_rdng_ocr_excep='Backlight Reflection' or null) = 0 THEN 0
+ ELSE ROUND((cast(count(m.prsnt_rdng_ocr_excep='Backlight Reflection' or null) as float)
+			 / cast(count(m.prsnt_mtr_status='Ok' or null) as float) * 100)::numeric, 2) END as Backlight_Reflection_Persent
+-- from readingmaster m where ofc_subdivision='MADHUBANI' group by ofc_subdivision 
+from readingmaster m {clause}  
+group by m.{orderby}
+                ''')
+            print(clause)
+            print(query)
+            cursor.execute(query)
+            person_objects = dictfetchall(cursor)
+            return Response(person_objects)
+    except:
+        return Response([])
+
+
+@api_view(['POST'])
+def meterWiseReportconsumer(request):
+    # pagesize = request.data.get("pagesize",)
+    # page = (request.data.get("page",))
+    # offset=(int(pagesize) * int(page))-int(pagesize)
+    data = request.data.get("filters",None)
+    print("rtyui")
+    clause = ''
+    try:
+        if data:
+            clause +='WHERE '
+            for i,(key,value) in enumerate(data.items()):
+                if i>0:
+                    clause +='AND '
+                if key=='reading_date_db':
+                    print("key['month']",key)
+                    print("value['month']",value)
+                    month = value.split('-')[1]
+                    key='extract(Month from reading_date_db)'
+                    value=month
+                clause +=f" {key}='{value}'"
+            cursor = connection.cursor()
+#             
+            query = (f'''
+            Select distinct m.cons_ac_no as consAccountNumber, m.cons_name as consName,m.ofc_discom as discom,m.ofc_zone as zone,
+m.ofc_circle as circle,m.ofc_division as division,m.ofc_subdivision as subdivision,o.sectionname as section,m.rdng_img as readingImg,
+m.md_img as mdImg from readingmaster m join office o ON m.ofc_section=o.sectioncode {clause}
+                ''')
+#             query = Consumers.objects.raw(f'''
+#             Select distinct m.cons_ac_no, m.cons_name,m.mr_id,m.ofc_discom,m.ofc_zone,
+# m.ofc_circle,m.ofc_division,m.ofc_subdivision,m.ofc_section,m.rdng_img,
+# m.md_img from readingmaster m {clause} order by m.cons_ac_no
+#                 ''')
+            print(clause)
+            print(query)
+            # serializer=meterWiseReportconsumerSerializer(query,many=True)
+            cursor.execute(query)
+            person_objects = dictfetchall(cursor)
+            return Response({"results":person_objects})
+            # print(serializer.data)
+            # return Response({"results":serializer.data})
+    except:
+        return Response([])

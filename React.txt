@@ -1,0 +1,115 @@
+
+useState Hook==========================================================
+The React useState Hook allows us to track state in a function component.
+import { useState } from "react";
+we are destructuring useState from react as it is a named export
+Initialize useState----------------------
+useState accepts an initial state and returns two values:
+The current state.
+A function that updates the state.
+function FavoriteColor() {
+  const [color, setColor] = useState("");
+}
+we set the initial state to an empty string: useState("")
+<h1>My favorite color is {color}!</h1>
+onClick={() => setColor("blue")}
+The useState Hook can be used to keep track of strings, numbers, booleans, arrays, objects, and any combination of these
+ const [car, setCar] = useState({
+    brand: "Ford",
+    year: "1964",
+    color: "red"
+  });
+const updateColor = () => {
+    setCar(previousState => {
+      return { ...previousState, color: "blue" }
+    });
+  }
+useEffect Hooks===========================================================
+The useEffect Hook allows you to perform side effects in your components.
+
+Some examples of side effects are: fetching data, directly updating the DOM, and timers.
+
+useEffect accepts two arguments. The second argument is optional.
+
+useEffect(<function>, <dependency>)
+useEffect(() => {
+  //Runs on every render
+});
+useEffect(() => {
+  //Runs only on the first render
+}, []);
+useEffect(() => {
+  //Runs on the first render
+  //And any time any dependency value changes
+}, [prop, state]);
+return () => clearTimeout(timer)
+React useContext Hook===============================================
+React Context is a way to manage state globally.
+The Problem
+State should be held by the highest parent component in the stack that requires access to the state.
+
+To illustrate, we have many nested components. The component at the top and bottom of the stack need access to the state.
+
+To do this without Context, we will need to pass the state as "props" through each nested component. This is called "prop drilling".
+
+Even though components 2-4 did not need the state, they had to pass the state along so that it could reach component 5.
+The Solution
+The solution is to create context.
+
+Context file---------------------
+
+import { createContext, useState } from "react";
+
+export const UserContext = createContext()
+
+
+const TestContext = (props) => {
+    const [Data,setData]=useState("apple")
+  return (
+    <UserContext.Provider value={{Data,setData}}>
+        {props.children}
+    </UserContext.Provider>
+  )
+}
+export default TestContext
+
+App.js-------------------
+import TestContext from './contexts/TestContext'
+<TestContext>
+all content 
+</TestContext>
+
+page --------------------------
+import { UserContext } from '../../contexts/TestContext';
+const abc = useContext(UserContext)
+console.log("abc",abc)
+abc.setData({"name":"ghulam","age":"1234"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

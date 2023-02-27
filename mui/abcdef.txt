@@ -1,0 +1,44 @@
+@api_view(['GET','POST'])
+def mvchecktestnew(request):
+    queryfilters=request.query_params.dict()
+    print("queryfilters",queryfilters)
+    pagesize = request.query_params.get("pagesize")
+    orderby= request.query_params.get("orderby")
+    paginator = PageNumberPagination()
+    # paginator.page_size = 10
+    paginator.page_size = pagesize
+    filter = request.query_params.get("filters")
+    filters=json.loads(filter)
+    print("filters",filters)
+    clause = ''
+    try:
+        print("ok1234567")
+        if filters:
+            clause +='WHERE '
+            for i,(key,value) in enumerate(filters.items()):
+                if i>0:
+                    clause +='AND '
+                if key=='month':
+                    print("key['month']",key)
+                    print("value['month']",value)
+                    month = value.split('-')[1]
+                    key='extract(month from reading_date_db)'
+                    value=month
+                clause +=f"{key}='{value}'"
+
+    except:
+        pass
+    cursor = connection.cursor()
+    # query = (f'''select m.mr_id as "mrId",m.rdng_date,m.prsnt_mtr_status,m.prsnt_ocr_rdng,m.prsnt_rdng,m.ocr_pf_reading,m.cons_name,m.prsnt_md_rdng_ocr,m.rdng_ocr_status,m.rdng_img,m.prsnt_md_rdng,m.id,r."mrPhoto"
+    #         from readingmaster m left outer join meterreaderregistration r on m.mr_id=r."mrId" {clause} order by m.rdng_date
+
+    # ''')
+    query = (f'''select m.mr_id as "mrId",m.rdng_date,m.prsnt_mtr_status,m.prsnt_ocr_rdng,m.prsnt_rdng,m.ocr_pf_reading,m.cons_name,m.prsnt_md_rdng_ocr,m.rdng_ocr_status,m.rdng_img,m.prsnt_md_rdng,m.id,r."mrPhoto"
+                    from readingmaster m left outer join meterreaderregistration r on m.mr_id=r."mrId" {clause} order by m.rdng_date DESC
+
+        ''')
+    print('query',query)
+    cursor.execute(query)
+    person_objects = dictfetchall(cursor)
+    result_page = paginator.paginate_queryset(person_objects, request)
+    return paginator.get_paginated_response(result_page)

@@ -1,0 +1,96 @@
+
+loading button ----------------------------------
+
+const [loading, setloading] = useState(false)
+ setloading(true)
+        api** responce
+ setloading(false)
+
+<Stack alignItems="flex-end" sx={{ mt: 3 }}>
+                <LoadingButton
+                  type="submit"
+                  variant="contained"
+                  loading={loading}
+                  onClick={onSubmit1}
+                >
+                  {!isEdit ? "Create User" : "Save Changes"}
+            </LoadingButton>
+</Stack>
+
+//=============================================
+backdrop----
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
+    setOpen(!open);
+ 	**api**
+    setOpen(false);
+
+<div>
+      <Button onClick={handleToggle}>Show backdrop</Button>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    </div>
+
+//==========================================
+
+pagination ----------------------------------------------
+
+Pagination from '@mui/material/Pagination';
+const [muipagination, setmuipagination] = useState()
+const [pageState, setpageState] = useState({
+    next:"",
+    prev:""
+});
+const getNewmvCardData=async(event,value=1)=>{
+    const response=await axios.get(`http://192.168.0.219:8005/mvchecktestnew/?pagesize=10&filters=${JSON.stringify(state)}&page=${value}`)
+    settableData(response.data.results)
+    setpageState({
+        next:response.data.next,
+        prev:response.data.previous
+    })
+    setmuipagination(response.data.count)
+}
+{muipagination &&    <Pagination onClick={() => window.scrollTo(0, 0)} count={Math.ceil(muipagination / 10)} onChange={getNewmvCardData} /> }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

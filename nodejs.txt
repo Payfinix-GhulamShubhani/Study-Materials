@@ -1,0 +1,22 @@
+REPL------------------------
+expresion
+variable
+multiline code //loop
+_ (last value)
+.editor
+-------------------------------
+fs-------------
+const fs = require('fs')
+fs.writeFileSync('filename',Data)
+fs.appendFileSync('filename',Data)
+fs.readFileSync('filename').toString()
+fs.readFileSync('filename','utf-8')
+fs.renameSync('oldfilename','newfilename')
+fs.mkdirSync('foldername')
+fs.rmdirSync('foldername')
+fs.writeFileSync('dusridir/filename',Data)
+fs.unlinkSync('filename')
+---------------
+mkdir foldername
+touch filename
+type null > filename  //index.js

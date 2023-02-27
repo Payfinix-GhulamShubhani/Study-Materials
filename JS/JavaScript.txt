@@ -1,0 +1,1346 @@
+++++!!!@@@###$$$%%%^^^&&&***((()))---=== JAVASCRIPT ++++!!!@@@###$$$%%%^^^&&&***((()))---===
+Why Study JavaScript?
+JavaScript is one of the 3 languages all web developers must learn:
+   1. HTML to define the content of web pages
+   2. CSS to specify the layout of web pages
+   3. JavaScript to program the behavior of web pages
+
+*JavaScript Can Change HTML Content
+getElementById() //"finds" an HTML element (with id="demo"), and changes the element content 
+(innerHTML) to "Hello JavaScript"
+<!DOCTYPE html>
+<html>
+<body>
+<h2>What Can JavaScript Do?</h2>
+<p id="demo">JavaScript can change HTML content.</p>
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+</body>
+</html>
+
+*JavaScript Can Change HTML Attribute Values
+<!DOCTYPE html>
+<html>
+<body>
+<h2>What Can JavaScript Do?</h2>
+<p>JavaScript can change HTML attribute values.</p>
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+</body>
+</html>
+
+*JavaScript Can Change HTML Styles (CSS)
+document.getElementById("demo").style.fontSize = "35px";
+
+*JavaScript Can Hide HTML Elements
+document.getElementById("demo").style.display = "none";
+
+Did You Know?
+JavaScript and Java are completely different languages, both in concept and design.
+JavaScript was invented by Brendan Eich in 1995, and became an ECMA standard in 1997.
+ECMA-262 is the official name of the standard. ECMAScript is the official name of the language.
+
+Where To========================================================================
+In HTML, JavaScript code is inserted between <script> and </script> tags.
+JavaScript Functions and Events
+A JavaScript function is a block of JavaScript code, that can be executed when "called" for.
+
+For example, a function can be called when an event occurs, like when the user clicks a button.
+
+JavaScript in <head> or <body>-------------
+<head>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+</script>
+</head>
+
+JavaScript in <body>-------------------
+<body>
+<h2>Demo JavaScript in Body</h2>
+<p id="demo">A Paragraph</p>
+<button type="button" onclick="myFunction()">Try it</button>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+</script>
+</body>
+**Note : Placing scripts at the bottom of the <body> element improves the display speed, 
+because script interpretation slows down the display.
+
+External file: myScript.js-----------------------------
+<script src="myScript.js"></script>
+You can place an external script reference in <head> or <body> as you like.
+The script will behave as if it was located exactly where the <script> tag is located.
+NOTE : External scripts cannot contain <script> tags.
+
+External JavaScript Advantages-----------
+Placing scripts in external files has some advantages:
+
+It separates HTML and code
+It makes HTML and JavaScript easier to read and maintain
+Cached JavaScript files can speed up page loads
+
+External References--------------
+With a full URL (a full web address) //  <script src="https://www.w3schools.com/js/myScript.js"></script>
+With a file path (like /js/) // <script src="/js/myScript.js"></script>
+Without any path // <script src="myScript.js"></script>
+
+JavaScript Output==============================================
+Writing into an HTML element, using innerHTML.
+Writing into the HTML output using document.write().
+Writing into an alert box, using window.alert().
+Writing into the browser console, using console.log().
+
+Using innerHTML----------------------------------
+To access an HTML element, JavaScript can use the document.getElementById(id) method.
+<script>
+document.getElementById("demo").innerHTML = 5 + 6;
+</script>
+
+Using document.write()------------
+<script>
+document.write(5 + 6);
+</script>
+
+Using document.write() after an HTML document is loaded, will delete all existing HTML:------
+<button type="button" onclick="document.write(5 + 6)">Try it</button>
+**The document.write() method should only be used for testing.
+
+JavaScript Statements==================================================
+let x, y, z;    // Statement 1
+x = 5;          // Statement 2
+y = 6;          // Statement 3
+z = x + y;      // Statement 4
+
+JavaScript Programs
+A computer program is a list of "instructions" to be "executed" by a computer.
+In a programming language, these programming instructions are called statements.
+A JavaScript program is a list of programming statements.
+**NOTE : In HTML, JavaScript programs are executed by the web browser.
+
+JavaScript Statements
+JavaScript statements are composed of:
+Values, Operators, Expressions, Keywords, and Comments.
+
+The statements are executed, one by one, in the same order as they are written.
+
+Semicolons ";"--------------
+Semicolons separate JavaScript statements.
+
+Add a semicolon at the end of each executable statement:
+let a, b, c;  // Declare 3 variables
+a = 5;        // Assign the value 5 to a
+b = 6;        // Assign the value 6 to b
+c = a + b;    // Assign the sum of a and b to c
+a = 5; b = 6; c = a + b;
+Ending statements with semicolon is not required, but highly recommended.
+JavaScript White Space------------------------------
+JavaScript ignores multiple spaces. You can add white space to your script to make it more readable.
+JavaScript Code Blocks----------
+{...}.The purpose of code blocks is to define statements to be executed together.
+Keyword	Description
+var	Declares a variable
+let	Declares a block variable
+const	Declares a block constant
+if	Marks a block of statements to be executed on a condition
+switch	Marks a block of statements to be executed in different cases
+for	Marks a block of statements to be executed in a loop
+function	Declares a function
+return	Exits a function
+try	Implements error handling to a block of statements
+
+JavaScript Values====================================
+The JavaScript syntax defines two types of values:
+Fixed values
+Variable values
+Fixed values are called Literals.
+Variable values are called Variables.
+
+JavaScript Literals-----------------
+> Numbers are written with or without decimals: 1) 10.20 2) 1001 
+> trings are text, written within double or single quotes: 1) "John Doe" 2) 'John Doe'
+
+JavaScript Variables------------------------
+In a programming language, variables are used to store data values.
+JavaScript uses the keywords var, let and const to declare variables.
+An equal sign is used to assign values to variables.
+In this example, x is defined as a variable. Then, x is assigned (given) the value 6: let x; x = 6;
+
+JavaScript Operators-------------------------
+JavaScript uses arithmetic operators ( + - * / ) to compute values: (5 + 6) * 10
+JavaScript uses an assignment operator ( = ) to assign values to variables: let x, y; x = 5; y = 6;
+
+JavaScript Expressions----------------------------
+An expression is a combination of values, variables, and operators, 
+which computes to a value. 1) 5 * 10 2) x * 10 3) "John" + " " + "Doe"
+
+JavaScript Comments----------------------------
+Code after double slashes // or between /* and */ is treated as a comment.
+Comments are ignored, and will not be executed:
+let x = 5;   // I will be executed
+// x = 6;   I will NOT be executed
+
+JavaScript Identifiers / Names------------------------
+A letter (A-Z or a-z or 0-9)
+A dollar sign ($)
+Or an underscore (_) 
+Subsequent characters may be letters, digits, underscores, or dollar signs.
+
+Note : Numbers are not allowed as the first character in names.
+
+JavaScript is Case Sensitive-------------------------
+All JavaScript identifiers are case sensitive. 
+let lastname, lastName;
+lastName = "Doe";
+lastname = "Peterson";
+Hyphens:**
+first-name, last-name, master-card, inter-city.
+Hyphens are not allowed in JavaScript. They are reserved for subtractions.
+Underscore:**
+first_name, last_name, master_card, inter_city.
+Underscore:**
+first_name, last_name, master_card, inter_city.
+Upper Camel Case (Pascal Case):**
+FirstName, LastName, MasterCard, InterCity.
+Lower Camel Case:**
+JavaScript programmers tend to use camel case that starts with a lowercase letter:
+firstName, lastName, masterCard, interCity.
+JavaScript Character Set-------------------------
+JavaScript uses the Unicode character set.
+Unicode covers (almost) all the characters, punctuations, and symbols in the world.
+
+JavaScript Comments============================================================
+JavaScript comments can be used to explain JavaScript code, and to make it more readable.
+JavaScript comments can also be used to prevent execution, when testing alternative code.
+
+Single Line Comments---------------
+Single line comments start with //.  to end of the line
+let x = 5;      // Declare x, give it the value of 5
+
+Multi-line Comments---------------
+Multi-line comments start with /* and end with */.
+Any text between /* and */ will be ignored by JavaScript
+/*
+The code below will change
+in my web page:
+*/
+
+JavaScript Variables==================================================================
+4 Ways to Declare a JavaScript Variable:
+Using var
+Using let
+Using const
+Using nothing
+
+var x = 5; var y = 6; var z = x + y;
+let x = 5; let y = 6; let z = x + y;
+
+JavaScript Identifiers----------------------
+All JavaScript variables must be identified with unique names.
+These unique names are called identifiers.
+The general rules for constructing names for variables (unique identifiers) are:
+Names can contain letters, digits, underscores, and dollar signs.
+Names must begin with a letter.
+Names can also begin with $ and _ (but we will not use it in this tutorial).
+Names are case sensitive (y and Y are different variables).
+Reserved words (like JavaScript keywords) cannot be used as names.
+
+Data Type :
+Number
+string
+object
+null
+undefine
+boolean
+
+Declaring a JavaScript Variable---------------------------------------
+Creating a variable in JavaScript is called "declaring" a variable.
+var carName;
+After the declaration, the variable has no value (technically it is undefined).
+
+One Statement, Many Variables--------------------
+let person = "John Doe", carName = "Volvo", price = 200;   (separate the variables by comma)
+
+JavaScript Let==========================================================
+The let keyword was introduced in ES6 (2015).
+Variables defined with let cannot be Redeclared.
+Variables defined with let must be Declared before use.
+Variables defined with let have Block Scope.
+
+Block Scope-------------------------
+Before ES6 (2015), JavaScript had only Global Scope and Function Scope.
+ES6 introduced two important new JavaScript keywords: let and const.
+These two keywords provide Block Scope in JavaScript.
+Variables declared inside a { } block cannot be accessed from outside the block:
+
+let x = 10;
+// Here x is 10
+{
+let x = 2;
+// Here x is 2
+}
+// Here x is 10
+
+const ======================================================
+JavaScript const variables must be assigned a value when they are declared:
+const PI = 3.14159265359;
+const PI;
+PI = 3.14159265359;
+
+var x = 2;     // Allowed
+const x = 2;   // Not allowed
+
+{
+let x = 2;     // Allowed
+const x = 2;   // Not allowed
+}
+
+{
+const x = 2;   // Allowed
+const x = 2;   // Not allowed
+}
+
+JavaScript Hoisting============================================
+Hoisting is JavaScript's default behavior of moving declarations to the top.
+In JavaScript, a variable can be declared after it has been used.
+In other words; a variable can be used before it has been declared.
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+
+The let and const Keywords---------------------
+Variables defined with let and const are hoisted to the top of the block, but not initialized.
+Meaning: The block of code is aware of the variable, but it cannot be used until it has been declared.
+Using a let variable before it is declared will result in a ReferenceError.
+carName = "Volvo";
+let carName; //undefine
+Using a const variable before it is declared, is a syntax errror, so the code will simply not run.
+carName = "Volvo";
+const carName;
+JavaScript only hoists declarations, not initializations.
+var x = 5; // Initialize x
+var y = 7; // Initialize y
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x + " " + y;           // Display x and y
+
+var x = 5; // Initialize x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x + " " + y;           // Display x and y
+var y = 7; // Initialize y
+
+This is because only the declaration (var y), not the initialization (=7) is hoisted to the top.
+Because of hoisting, y has been declared before it is used, but because initializations are not hoisted, the value of y is undefined.
+
+JavaScript Scope=====================================================
+JavaScript has 3 types of scope:-----------
+Block scope
+Function scope
+Global scope
+
+Block Scope
+Before ES6 (2015), JavaScript had only Global Scope and Function Scope.
+
+ES6 introduced two important new JavaScript keywords: let and const.
+
+These two keywords provide Block Scope in JavaScript.
+
+Variables declared inside a { } block cannot be accessed from outside the block: { let x = 2; }// x can NOT be used here
+Variables declared with the var keyword can NOT have block scope.
+Variables declared inside a { } block can be accessed from outside the block. { let x = 2; }// x can be used here
+*Variables declared within a JavaScript function, become LOCAL to the function.
+They can only be accessed from within the function.
+Local variables are created when a function starts, and deleted when the function is completed.
+
+Function Scope -----------------------------------------------
+JavaScript has function scope: Each function creates a new scope.
+Variables defined inside a function are not accessible (visible) from outside the function.
+Variables declared with var, let and const are quite similar when declared inside a function.
+
+Global JavaScript Variables------------------------
+A variable declared outside a function, becomes GLOBAL.
+A global variable has Global Scope:
+All scripts and functions on a web page can access it.
+
+Global Variables in HTML---------------------------------
+Global variables defined with the var keyword belong to the window object:
+var carName = "Volvo";
+// code here can use window.carName
+
+** Your global variables (or functions) can overwrite window variables (or functions).
+Any function, including the window object, can overwrite your global variables and functions 
+
+The Lifetime of JavaScript Variables-----------------------
+The lifetime of a JavaScript variable starts when it is declared.
+
+Function (local) variables are deleted when the function is completed.
+
+In a web browser, global variables are deleted when you close the browser window (or tab).
+Function arguments (parameters) work as local variables inside functions.
+
+JavaScript Operators=============================================
+Arithmetic Operators
+Assignment Operators
+Comparison Operators
+Logical Operators
+Conditional Operators
+Type Operators
+
+JavaScript Arithmetic Operators---------------------------
++	Addition
+-	Subtraction
+*	Multiplication
+**	Exponentiation (ES2016)
+/	Division
+%	Modulus (Division Remainder)
+++	Increment
+--	Decrement
+Operators and Operands++++++++++++++++
+The numbers (in an arithmetic operation) are called operands.
+The operation (to be performed between the two operands) is defined by an operator.
+x ** y produces the same result as Math.pow(x,y):
+let x = 5;
+let z = Math.pow(x,2);
+Operator Precedence++++++++++++++++++++++++
+When many operations have the same precedence (like addition and subtraction or multiplication and division), they are computed from left to right:
+
+JavaScript Assignment Operators------------------------
+=	x = y	x = y
++=	x += y	x = x + y
+-=	x -= y	x = x - y
+*=	x *= y	x = x * y
+/=	x /= y	x = x / y
+%=	x %= y	x = x % y
+**=	x **= y	x = x ** y
+let text3 = text1 + " " + text2;
+let text1 = "What a very ";
+text1 += "nice day";
+What a very nice day
+
+The &&= Operator ++++++++++++++++++=   (Logical AND Assignment)
+If the first value is true, the second value is assigned.
+let x = 10;
+x &&= 5;
+
+The ||= Operator +++++++++++++= Logical OR Assignment 
+If the first value is false, the second value is assigned.
+let x = 10;  //  if x=undefine then output = 5
+x ||= 5; // 10    (2020)
+
+The ??= Operator++++++++++=    Nullish Coalescing Assignment
+If the first value is undefined or null, the second value is assigned.
+let x = 10;
+x ??= 5;   (2020)
+
+JavaScript Comparison Operators------------------------------
+Operator	Description
+==	equal to
+===	equal value and equal type
+!=	not equal
+!==	not equal value or not equal type
+>	greater than
+<	less than
+>=	greater than or equal to
+<=	less than or equal to
+?	ternary operator
+
+JavaScript Logical Operators-------------------------------
+Operator	Description
+&&	logical and
+||	logical or
+!	logical not
+
+JavaScript Type Operators------------------------------------------------
+Operator	Description
+typeof	Returns the type of a variable
+instanceof	Returns true if an object is an instance of an object type
+
+JavaScript Bitwise Operators
+Bit operators work on 32 bits numbers.
+
+Any numeric operand in the operation is converted into a 32 bit number. The result is converted back to a JavaScript number.
+Operator	Description	Example	Same as	Result	Decimal
+&	AND	5 & 1	0101 & 0001	0001	 1
+|	OR	5 | 1	0101 | 0001	0101	 5
+~	NOT	~ 5	 ~0101	1010	 10
+^	XOR	5 ^ 1	0101 ^ 0001	0100	 4
+<<	left shift	5 << 1	0101 << 1	1010	 10
+>>	right shift	5 >> 1	0101 >> 1	0010	  2
+>>>	unsigned right shift	5 >>> 1	0101 >>> 1	0010	  2
+
+JavaScript Data Types================================================
+JavaScript has 8 Datatypes
+1. String
+2. Number
+3. Bigint
+4. Boolean
+5. Undefined
+6. Null
+7. Symbol
+8. Object
+
+The object data type can contain:
+1. An object
+2. An array
+3. A date
+When adding a number and a string, JavaScript will treat the number as a string.
+JavaScript evaluates expressions from left to right. Different sequences can produce different results:
+let x = 16 + 4 + "Volvo"; //20colvo
+let x = "Volvo" + 16 + 4; //volvo164
+JavaScript BigIntn---------------------------
+All JavaScript numbers are stored in a a 64-bit floating-point format.
+JavaScript BigInt is a new datatype (2020) that can be used to store integer values that are too big to be represented by a normal JavaScript Number.
+let x = BigInt("123456789012345678901234567890");
+JavaScript Arrays-------------------------
+Array items are separated by commas.
+const cars = ["Saab", "Volvo", "BMW"];
+Array indexes are zero-based, which means the first item is [0], second is [1], and so on.
+JavaScript Objects------------------------------
+JavaScript objects are written with curly braces {}.
+Object properties are written as name:value pairs, separated by commas.
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+The typeof Operator
+You can use the JavaScript typeof operator to find the type of a JavaScript variable.
+The typeof operator returns the type of a variable or an expression:
+typeof ""             // Returns "string"
+typeof "John"         // Returns "string"
+typeof 3.14           // Returns "number"
+Undefined---------------------------------------------------
+let car;    // Value is undefined, type is undefined
+Any variable can be emptied, by setting the value to undefined. The type will also be undefined.
+Empty Values----------------------------------------------
+An empty value has nothing to do with undefined.
+An empty string has both a legal value and a type
+let car = "";    // The value is "", the typeof is "string"
+JavaScript Functions============================================================
+A JavaScript function is a block of code designed to perform a particular task.
+A JavaScript function is executed when "something" invokes it (calls it).
+A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().
+
+Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).
+
+The parentheses may include parameter names separated by commas:
+(parameter1, parameter2, ...)
+
+The code to be executed, by the function, is placed inside curly brackets: {}
+
+function name(parameter1, parameter2, parameter3) {
+  // code to be executed
+}
+Function Return-------------------
+When JavaScript reaches a return statement, the function will stop executing.
+Functions often compute a return value. The return value is "returned" back to the "caller"
+
+Why Functions?---------------------------------
+You can reuse code: Define the code once, and use it many times.
+
+You can use the same code many times with different arguments, to produce different results.
+note Accessing a function without () will return the function object instead of the function result.
+Local Variables
+Variables declared within a JavaScript function, become LOCAL to the function.
+
+Local variables can only be accessed from within the function.
+Since local variables are only recognized inside their functions, variables with the same name can be used in different functions.
+
+Local variables are created when a function starts, and deleted when the function is completed.
+JavaScript Objects============================================
+Real Life Objects, Properties, and Methods
+In real life, a car is an object.
+
+A car has properties like weight and color, and methods like start and stop:
+All cars have the same properties, but the property values differ from car to car.
+
+All cars have the same methods, but the methods are performed at different times.
+Objects are variables too. But objects can contain many values.
+
+This code assigns many values (Fiat, 500, white) to a variable named car:
+
+const car = {type:"Fiat", model:"500", color:"white"};
+Object Properties--------------------------
+The name:values pairs in JavaScript objects are called properties:
+Accessing Object Properties----------------------------
+bjectName.propertyName
+or
+objectName["propertyName"]
+
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+In the example above, this refers to the person object.
+
+I.E. this.firstName means the firstName property of this.
+
+I.E. this.firstName means the firstName property of person.
+Do Not Declare Strings, Numbers, and Booleans as Objects!----------------------------
+When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+
+x = new String();        // Declares x as a String object
+y = new Number();        // Declares y as a Number object
+z = new Boolean();       // Declares z as a Boolean object
+Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
+JavaScript Events===========================
+HTML Events-------------------
+An HTML event can be something the browser does, or something a user does.
+
+Here are some examples of HTML events:
+
+An HTML web page has finished loading
+An HTML input field was changed
+An HTML button was clicked
+Often, when events happen, you may want to do something.
+
+JavaScript lets you execute code when events are detected.
+<button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>
+Common HTML Events
+Here is a list of some common HTML events:
+
+Event	Description
+onchange	An HTML element has been changed
+onclick	The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	The browser has finished loading the page
+JavaScript Event Handlers
+Event handlers can be used to handle and verify user input, user actions, and browser actions:
+
+Things that should be done every time a page loads
+Things that should be done when the page is closed
+Action that should be performed when a user clicks a button
+Content that should be verified when a user inputs data
+And more ...
+Many different methods can be used to let JavaScript work with events:
+
+HTML event attributes can execute JavaScript code directly
+HTML event attributes can call JavaScript functions
+You can assign your own event handler functions to HTML elements
+You can prevent events from being sent or being handled
+And more ...
+JavaScript Strings==================================================
+A JavaScript string is zero or more characters written inside quotes.
+String Length-------------
+To find the length of a string, use the built-in length property:
+let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let length = text.length;
+Escape Character-------------------------------------------------
+let text = "We are the so-called "Vikings" from the north.";
+The solution to avoid this problem, is to use the backslash escape character.
+let text = "We are the so-called \"Vikings\" from the north.";
+We are the so-called "Vikings" from the north.
+
+Code	Result
+\b	Backspace
+\f	Form Feed
+\n	New Line
+\r	Carriage Return
+\t	Horizontal Tabulator
+\v	Vertical Tabulator
+Breaking Long Code Lines------------------------
+document.getElementById("demo").innerHTML =
+"Hello Dolly!";
+document.getElementById("demo").innerHTML = "Hello \                       #all browser b
+Dolly!";
+document.getElementById("demo").innerHTML = "Hello " +
+"Dolly!"; ✅
+document.getElementById("demo").innerHTML = \
+"Hello Dolly!"; ❎
+JavaScript Strings as Objects----------------------------
+But strings can also be defined as objects with the keyword new:
+let x = "John";
+let y = new String("John");
+
+(x == y) true or false?
+let x = new String("John");
+let y = new String("John");
+Comparing two JavaScript objects always returns false.
+JavaScript String Reference++++++++++++++++++++++++++++++++++
+A JavaScript string stores a series of characters like "John Doe".
+String indexes are zero-based:
+The first character is in position 0, the second in 1, and so on.
+Normally, strings like "John Doe", cannot have methods or properties because they are not objects.
+
+But with JavaScript, methods and properties are also available to strings, because JavaScript treats strings as objects when executing methods and properties.
+
+JavaScript String Methods
+Name	Description
+charAt()	Returns the character at a specified index (position)
+charCodeAt()	Returns the Unicode of the character at a specified index
+concat()	Returns two or more joined strings
+constructor	Returns the string's constructor function
+endsWith()	Returns if a string ends with a specified value
+fromCharCode()	Returns Unicode values as characters
+includes()	Returns if a string contains a specified value
+indexOf()	Returns the index (position) of the first occurrence of a value in a string
+lastIndexOf()	Returns the index (position) of the last occurrence of a value in a string
+length	        Returns the length of a string
+localeCompare()	Compares two strings in the current locale
+match()	        Searches a string for a value, or a regular expression, and returns the matches
+prototype	Allows you to add properties and methods to an object
+repeat()	Returns a new string with a number of copies of a string
+replace()	Searches a string for a value, or a regular expression, and returns a string where the values are replaced
+search()	Searches a string for a value, or regular expression, and returns the index (position) of the match
+slice()	        Extracts a part of a string and returns a new string
+split()		Splits a string into an array of substrings
+startsWith()	Checks whether a string begins with specified characters
+substr()	Extracts a number of characters from a string, from a start index (position)
+substring()	Extracts characters from a string, between two specified indices (positions)
+toLocaleLowerCase()	Returns a string converted to lowercase letters, using the host's locale
+toLocaleUpperCase()	Returns a string converted to uppercase letters, using the host's locale
+toLowerCase()	Returns a string converted to lowercase letters
+toString()	Returns a string or a string object as a string
+toUpperCase()	Returns a string converted to uppercase letters
+trim()		Returns a string with removed whitespaces
+trimEnd()	Returns a string with removed whitespaces from the end
+trimStart()	Returns a string with removed whitespaces from the start
+valueOf()	Returns the primitive value of a string or a string object
+
+Note
+All string methods return a new value.
+
+They do not change the original variable.
+
+String HTML Wrapper Methods
+HTML wrapper methods return a string wrapped inside an HTML tag.
+
+These are not standard methods, and may not work as expected.
+
+Method	Description
+anchor()	Displays a string as an anchor
+big()		Displays a string using a big font
+blink()		Displays a blinking string
+bold()		Displays a string in bold
+fixed()		Displays a string using a fixed-pitch font
+fontcolor()	Displays a string using a specified color
+fontsize()	Displays a string using a specified size
+italics()	Displays a string in italic
+link()		Displays a string as a hyperlink
+small()		Displays a string using a small font
+strike()	Displays a string with a strikethrough
+sub()		Displays a string as subscript text
+sup()		Displays a string as superscript text
+
+Extracting String Parts
+There are 3 methods for extracting a part of a string:
+
+slice(start, end)
+substring(start, end)
+substr(start, length)
+JavaScript String slice()---------------------
+slice() extracts a part of a string and returns the extracted part in a new string.
+
+The method takes 2 parameters: start position, and end position (end not included).
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7, 13);  //Banana
+let part = text.slice(7); //Banana, Kiwi
+let part = text.slice(-12, -6);   //Banana   where B is -12 and a is -7 ,-6 is exclude
+JavaScript counts positions from zero.
+JavaScript String substring()---------------------------
+substring() is similar to slice().
+let str = "Apple, Banana, Kiwi";
+let part = str.substring(7, 13);
+The difference is that start and end values less than 0 are treated as 0 in substring().
+If you omit the second parameter, substring() will slice out the rest of the string.
+JavaScript String substr()-------------------------------
+substr() is similar to slice().
+The difference is that the second parameter specifies the length of the extracted part.
+let str = "Apple, Banana, Kiwi";
+let part = str.substr(7, 6);
+If you omit the second parameter, substr() will slice out the rest of the string.
+If the first parameter is negative, the position counts from the end of the string.
+let part = str.substr(-4);  //Kiwi
+Replacing String Content-----------------------------------
+The replace() method replaces a specified value with another value in a string:
+The replace() method does not change the string it is called on.
+
+The replace() method returns a new string.
+
+The replace() method replaces only the first match
+
+If you want to replace all matches, use a regular expression with the /g flag set. See examples below.
+By default, the replace() method is case sensitive
+To replace case insensitive, use a regular expression with an /i flag (insensitive):
+let newText = text.replace(/MICROSOFT/i, "W3Schools");
+To replace all matches, use a regular expression with a /g flag (global match):
+let newText = text.replace(/Microsoft/g, "W3Schools");
+JavaScript String ReplaceAll()-------------------------------------
+text = text.replaceAll("cats","dogs");
+The replaceAll() method allows you to specify a regular expression instead of a string to be replaced.
+If the parameter is a regular expression, the global flag (g) must be set set, otherwise a TypeError is thrown.
+text = text.replaceAll(/Cats/g,"Dogs");
+JavaScript String toUpperCase()---------------
+let text1 = "Hello World!";
+let text2 = text1.toUpperCase(); //
+
+JavaScript String toLowerCase()----------------
+let text1 = "Hello World!";       // String
+let text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+
+JavaScript String concat()------------------
+concat() joins two or more strings:
+let text1 = "Hello";
+let text2 = "World";
+let text3 = text1.concat(" ", text2);
+text = "Hello" + " " + "World!";
+text = "Hello".concat(" ", "World!");
+*****All string methods return a new string. They don't modify the original string.
+
+Formally said:
+
+Strings are immutable: Strings cannot be changed, only replaced.
+
+JavaScript String trim()------------------------
+The trim() method removes whitespace from both sides of a string:
+
+Example
+let text1 = "      Hello World!      ";
+let text2 = text1.trim();
+
+JavaScript String trimStart()-----------------
+ECMAScript 2019 added the String method trimStart() to JavaScript.
+
+The trimStart() method works like trim(), but removes whitespace only from the start of a string
+
+JavaScript String trimEnd()-------------------
+ECMAScript 2019 added the String method trimEnd() to JavaScript.
+
+The trimEnd() method works like trim(), but removes whitespace only from the end of a string.
+
+JavaScript String padStart()-------------------------------
+The padStart() method pads a string with another string:
+let text = "5";
+let padded = text.padStart(4,"x"); //xxx5
+
+The padStart() method is a string method.
+To pad a number, convert the number to a string first. 
+
+JavaScript String padEnd()-----------------
+The padEnd() method pads a string with another string:
+let text = "5";
+let padded = text.padEnd(4,"x");
+
+JavaScript String charAt()--------------
+The charAt() method returns the character at a specified index (position) in a string:
+let text = "HELLO WORLD";
+let char = text.charAt(0);      //H  (single charactor)
+
+JavaScript String charCodeAt()
+The charCodeAt() method returns the unicode of the character at a specified index in a string:
+
+The method returns a UTF-16 code (an integer between 0 and 65535).
+let text = "HELLO WORLD";
+let char = text.charCodeAt(0); // 72(H)
+
+Property Access------------------
+ECMAScript 5 (2009) allows property access [ ] on strings:
+let text = "HELLO WORLD";
+let char = text[0];
+It makes strings look like arrays (but they are not)
+If no character is found, [ ] returns undefined, while charAt() returns an empty string.
+It is read only. str[0] = "A" gives no error (but does not work!)
+let text = "HELLO WORLD";
+text[0] = "A";    // Gives no error, but does not work
+
+Converting a String to an Array ---------------------------------
+If you want to work with a string as an array, you can convert it to an array.
+JavaScript String split()
+A string can be converted to an array with the split() method:
+text.split(",")    // Split on commas
+text.split(" ")    // Split on spaces
+text.split("|")    // Split on pipe
+If the separator is omitted, the returned array will contain the whole string in index [0].
+
+If the separator is "", the returned array will be an array of single characters:
+text.split("") 
+h
+e
+y
+JavaScript String Search=============================================
+JavaScript Search Methods--------
+String indexOf()
+String lastIndexOf()
+String search()
+String match()
+String matchAll()
+String includes()
+String startsWith()
+String endsWith()
+
+let str = "Please locate where 'locate' occurs!";
+JavaScript String indexOf()------------------------
+The indexOf() method returns the index of (position of) the first occurrence of a string in a string:
+str.indexOf("locate");     //7
+
+JavaScript String lastIndexOf()-------------------
+The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
+text.lastIndexOf("locate");   //21
+
+Both indexOf(), and lastIndexOf() return -1 if the text is not found:
+text.lastIndexOf("John");   //-1
+Both methods accept a second parameter as the starting position for the search:
+text.indexOf("locate", 15);
+****The lastIndexOf() methods searches backwards (from the end to the beginning), meaning: if the second parameter is 15, the search starts at position 15, and searches to the beginning of the string.
+JavaScript String search()-------------------------------
+The search() method searches a string for a string (or a regular expression) and returns the position of the match
+str.search("locate");   //7
+The two methods, indexOf() and search(), are equal?
+The two methods are NOT equal. These are the differences:
+	The search() method cannot take a second start position argument.
+	The indexOf() method cannot take powerful search values (regular expressions).
+JavaScript String match()------------------------------------------
+The match() method returns an array containing the results of matching a string against a string (or a regular expression).
+let text = "The rain in SPAIN stays mainly in the plain";
+text.match("ain");   //ain
+text.match(/ain/g);
+text.match(/ain/gi);    //ain,AIN,ain,ain
+***If a regular expression does not include the g modifier (global search), match() will return only the first match in the string.
+
+JavaScript String matchAll()--------------------------------ES2020 feature.
+The matchAll() method returns an iterator containing the results of matching a string against a string (or a regular expression).
+const iterator = text.matchAll("Cats");
+If you want to search case insensitive, the insensitive flag (i) must be set:
+const iterator = text.matchAll(/Cats/gi);
+JavaScript String includes()------------------------ES6 feature.
+includes() is case sensitive.
+The includes() method returns true if a string contains a specified value.
+Otherwise it returns false.
+Check if a string includes "world". Start at position 12:
+text.includes("world", 12);
+JavaScript String startsWith()------------ES6 feature.
+startsWith() is case sensitive.
+startsWith() is an ES6 feature.
+The startsWith() method returns true if a string begins with a specified value.
+Otherwise it returns false
+let text = "Hello world, welcome to the universe.";
+text.startsWith("Hello");        //true
+text.startsWith("world")          //false
+text.startsWith("world", 5)          //false
+JavaScript String endsWith()----------------------ES6 feature
+endsWith() is case sensitive.
+endsWith() is an ES6 feature.
+The endsWith() method returns true if a string ends with a specified value.
+Otherwise it returns false:
+text.endsWith("Doe");
+text.endsWith("world", 11);
+Template Literals==========================================ES6 feature
+Synonyms:------------
+Template Literals
+Template Strings
+String Templates
+Back-Tics Syntax-----------
+Template Literals use back-ticks (``) rather than the quotes ("") to define a string
+let text = `Hello World!`;
+With template literals, you can use both single and double quotes inside a string:--------
+let text = `He's often called "Johnny"`;
+Template literals allows multiline strings:----------
+let text =
+`The quick
+brown fox
+jumps over
+the lazy dog`;
+Interpolation-------------
+Template literals provide an easy way to interpolate variables and expressions into strings.
+The method is called string interpolation.
+Variable Substitutions++++++
+let text = `Welcome ${firstName}, ${lastName}!`;
+Automatic replacing of variables with real values is called string interpolation.
+Expression Substitution++++++++++
+let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;
+
+JavaScript Numbers===========================================
+JavaScript has only one type of number. Numbers can be written with or without decimals.
+Extra large or extra small numbers can be written with scientific (exponent) notation:
+let x = 123e5;    // 12300000
+let y = 123e-5;   // 0.00123
+
+Integer Precision
+Integers (numbers without a period or exponent notation) are accurate up to 15 digits.
+
+JavaScript uses the + operator for both addition and concatenation.
+
+Numbers are added. Strings are concatenated.
+JavaScript will try to convert strings to numbers in all numeric operations:
+let x = "100";
+let y = "10";
+let z = x / y;        //10
+let z = x * y;       //1000
+let z = x - y;      //90
+let z = x + y;     //10010
+
+NaN-------------------------------------------
+NaN - Not a Number
+NaN is a JavaScript reserved word indicating that a number is not a legal number.
+
+Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number):
+let x = 100 / "Apple";
+You can use the global JavaScript function isNaN() to find out if a value is a not a number
+isNaN(x);   //true
+NaN + 5 = NaN  and NaN + "5" = NaN5    
+typeof NaN  is Number
+
+Infinity---------------------------------------
+Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number.
+
+Example
+let myNumber = 2;
+// Execute until Infinity
+while (myNumber != Infinity) {
+  myNumber = myNumber * myNumber;
+}
+Division by 0 (zero) also generates Infinity: -2/0 = undefine
+
+Hexadecimal----------------------------
+By default, JavaScript displays numbers as base 10 decimals.
+
+But you can use the toString() method to output numbers from base 2 to base 36.
+
+Hexadecimal is base 16. Decimal is base 10. Octal is base 8. Binary is base 2.
+
+Example
+let myNumber = 32;
+myNumber.toString(32);
+myNumber.toString(16);
+myNumber.toString(12);
+myNumber.toString(10);
+myNumber.toString(8);
+myNumber.toString(2);
+
+JavaScript Numbers as Objects-----------------------
+let x = 123;    //number
+let y = new Number(123);   //object 
+The new keyword complicates the code and slows down execution speed.
+let x = new Number(500);
+let y = new Number(500);
+x===y (false)  ||  x==y ( false)
+Comparing two JavaScript objects always returns false.
+
+JavaScript BigInt==============================================
+JavaScript BigInt variables are used to store big integer values that are too big to be represented by a normal JavaScript Number.
+JavaScript Integer Accuracy
+JavaScript integers are only accurate up to 15 digits
+How to Create a BigInt-------------------------------
+To create a BigInt, append n to the end of an integer or call BigInt()
+let x = 1234567890123456789012345n;
+let y = BigInt(1234567890123456789012345)
+The JavaScript typeof a BigInt is "bigint":
+BigInt is the second numeric data type in JavaScript (after Number).
+
+With BigInt the total number of supported data types in JavaScript is 8:
+
+1. String
+2. Number
+3. Bigint
+4. Boolean
+5. Undefined
+6. Null
+7. Symbol
+8. Object
+Operators that can be used on a JavaScript Number can also be used on a BigInt.
+Notes
+Arithmetic between a BigInt and a Number is not allowed (type conversion lose information).
+
+Unsigned right shift (>>>) can not be done on a BigInt (it does not have a fixed width).
+A BigInt can not have decimals.
+let x = 5n;
+let y = x / 2;
+// Error: Cannot mix BigInt and other types, use explicit conversion.
+let y = Number(x) / 2;
+Minimum and Maximum Safe Integers------------------------ ES6
+ES6 added max and min properties to the Number object:
+
+MAX_SAFE_INTEGER    //let x = Number.MAX_SAFE_INTEGER;
+MIN_SAFE_INTEGER    //let x = Number.MIN_SAFE_INTEGER;
+
+New Number Methods------------------es6
+The Number.isInteger() method returns true if the argument is an integer.
+Number.isInteger(10);     //true
+Number.isInteger(10.5);  //false 
+
+Number.isSafeInteger(10);
+Number.isSafeInteger(12345678901234567890);
+This is safe: 9007199254740991. This is not safe: 9007199254740992.
+
+
+Method	Description
+toString()	Returns a number as a string
+toExponential()	Returns a number written in exponential notation
+toFixed()	Returns a number written with a number of decimals
+toPrecision()	Returns a number written with a specified length
+ValueOf()	Returns a number as a number
+
+let x = 123;
+x.toString();
+(123).toString();
+(100 + 23).toString();
+
+The toExponential() Method---------------------
+toExponential() returns a string, with a number rounded and written using exponential notation.
+let x = 9.656;
+x.toExponential();    // 9.656e+0
+x.toExponential(2);          //9.66e+0
+x.toExponential(4);         //9.6560e+0
+
+The toFixed() Method---------------
+toFixed() returns a string, with the number written with a specified number of decimals
+x.toFixed(0);     //10
+x.toFixed(2);      //9.66
+
+The toPrecision() Method ----------------------
+toPrecision() returns a string, with a number written with a specified length:
+x.toPrecision();      //9.656
+x.toPrecision(2);      //9.7
+x.toPrecision(4);      //9.656
+x.toPrecision(6);       //9.65600
+
+The valueOf() Method
+valueOf() returns a number as a number.
+x.valueOf();             //123
+(123).valueOf();         //123
+(100 + 23).valueOf();   //123
+
+The Number() Method
+The Number() method can be used to convert JavaScript variables to numbers:
+  Number(true)              //1
+  Number(false)              //0
+  Number("10")                //10
+  Number("  10")               //10
+  Number("10  ")               //10
+  Number(" 10  ")              //10
+  Number("10.33")             //10.33
+  Number("10,33")             //NaN
+  Number("10 33")            //NaN
+  Number("John");            //NaN
+The number of milliseconds between 1970-01-02 and 1970-01-01 is 86400000
+
+The parseInt() Method---------------------------------
+parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned
+parseInt("-10");              //-10
+parseInt("-10.33");           //-10
+parseInt("10");                              //10
+parseInt("10.33");                   //10
+parseInt("10 20 30");            //10
+parseInt("10 years");          //10    
+parseInt("years 10");         //NaN
+
+The parseFloat() Method-------------------------------------
+parseFloat() parses a string and returns a number. Spaces are allowed. Only the first number is returned:
+
+Example
+parseFloat("10");
+parseFloat("10.33");          //10.33
+parseFloat("10 20 30");
+parseFloat("10 years");
+parseFloat("years 10");
+
+Number Object Methods   -----------------------------------------
+These object methods belong to the Number object:
+
+Method	Description
+Number.isInteger()	Returns true if the argument is an integer
+Number.isSafeInteger()	Returns true if the argument is a safe integer
+Number.parseFloat()	Converts a string to a number
+Number.parseInt()	Converts a string to a whole number
+
+Number Methods Cannot be Used on Variables
+The number methods above belong to the JavaScript Number Object.
+
+These methods can only be accessed like Number.isInteger().
+
+Using X.isInteger() where X is a variable, will result in an error:
+
+TypeError X.isInteger is not a function.
+
+The Number.isInteger() method returns true if the argument is an integer.
+Number.isInteger(10);
+Number.isInteger(10.5);
+
+JavaScript Arrays=========================================================
+An array is a special variable, which can hold more than one value:
+An array can hold many values under a single name, and you can access the values by referring to an index number
+const cars = ["Saab", "Volvo", "BMW"];
+Spaces and line breaks are not important. A declaration can span multiple lines
+const cars = [];
+cars[0]= "Saab";
+cars[1]= "Volvo";
+cars[2]= "BMW";
+const cars = new Array("Saab", "Volvo", "BMW");
+There is no need to use new Array().
+
+For simplicity, readability and execution speed, use the array literal method.
+You access an array element by referring to the index number
+const cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;
+You can have objects in an Array. You can have functions in an Array. You can have arrays in an Array:
+
+myArray[0] = Date.now;
+myArray[1] = myFunction;
+myArray[2] = myCars;
+The length Property-------------------------
+The length property of an array returns the length of an array (the number of array elements)
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let length = fruits.length       //4  
+The length property is always one more than the highest array index.     //0to3
+Accessing the Last Array Element            //let fruit = fruits[fruits.length - 1];
+let text = "<ul>";
+for (let i = 0; i < fruits.length; i++) {             // for loop
+  text += "<li>" + fruits[i] + "</li>";
+}
+text += "</ul>";
+
+let text = "<ul>";
+fruits.forEach(myFunction);
+text += "</ul>";
+
+function myFunction(value) {
+  text += "<li>" + value + "</li>";
+}
+The easiest way to add a new element to an array is using the push() method
+New element can also be added to an array using the length property:fruits[fruits.length] = "Lemon";  // Adds "Lemon" to fruits
+In JavaScript, arrays always use numbered indexes.  
+If you use named indexes, JavaScript will redefine the array to an object.
+
+After that, some array methods and properties will produce incorrect results.
+const person = [];
+person["firstName"] = "John";
+person["lastName"] = "Doe";
+person["age"] = 46;
+person.length;     // Will return 0
+person[0];         // Will return undefined
+
+The Difference Between Arrays and Objects--------------------
+In JavaScript, arrays use numbered indexes.  
+
+In JavaScript, objects use named indexes.
+Arrays are a special kind of objects, with numbered indexes.
+JavaScript new Array()-------------------------------
+JavaScript has a built-in array constructor new Array().
+
+But you can safely use [] instead.
+
+These two different statements both create a new empty array named points:
+
+const points = new Array();
+const points = [];
+const points = [40];
+is not the same as:
+
+const points = new Array(40);
+The problem is that the JavaScript operator typeof returns "object"
+Array.isArray(fruits);
+
+The instanceof operator returns true if an object is created by a given constructor:
+const fruits = ["Banana", "Orange", "Apple"];
+fruits instanceof Array;
+
+JavaScript Array Methods========================
+Converting Arrays to Strings---------------------
+The JavaScript method toString() converts an array to a string of (comma separated) array values
+The join() method also joins all array elements into a string
+fruits.join(" * ");
+
+JavaScript Array pop()-------------------------------
+The pop() method removes the last element from an array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.pop();
+The pop() method returns the value that was "popped out"  // mango
+JavaScript Array push()-----------------------------
+The push() method adds a new element to an array (at the end)
+The push() method returns the new array length
+let length = fruits.push("Kiwi");   //5
+JavaScript Array shift()--------------------------
+The shift() method removes the first array element and "shifts" all other elements to a lower index
+fruits.shift()  // banana
+The shift() method returns the value that was "shifted out"
+JavaScript Array unshift()------------------------------
+The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements
+fruits.unshift("Lemon");
+The unshift() method returns the new array length
+Array elements are accessed using their index number:**
+JavaScript Array length---------------
+The length property provides an easy way to append a new element to an array
+fruits[fruits.length] = "Kiwi";  // add in last 
+JavaScript Array delete()-------------------------------
+Array elements can be deleted using the JavaScript operator delete.
+Using delete leaves undefined holes in the array.
+Use pop() or shift() instead.
+
+Merging (Concatenating) Arrays---------------------------
+The concat() method creates a new array by merging (concatenating) existing arrays
+const myGirls = ["Cecilie", "Lone"];
+const myBoys = ["Emil", "Tobias", "Linus"];
+const myChildren = arr1.concat("Peter"); 
+const myChildren = myGirls.concat(myBoys);
+The concat() method does not change the existing arrays. It always returns a new array
+The concat() method can take any number of array arguments
+
+JavaScript Array splice()-----------------------------
+The splice() method can be used to add new items to an array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 2, "Lemon", "Kiwi")
+fruits.splice(0, 1) //delete one item at index 0 and add nothing
+The first parameter (2) defines the position where new elements should be added (spliced in).
+The second parameter (0) defines how many elements should be removed.
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+The splice() method returns an array with the deleted items
+you can use splice() to remove elements without leaving "holes" in the array
+
+JavaScript Array slice()------------------------
+The slice() method slices out a piece of an array into a new array
+The slice() method creates a new array
+The slice() method does not remove any elements from the source array
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruits.slice(3);
+slices out a part of an array starting from array element 3 ("Apple")
+The slice() method can take two arguments like slice(1, 3).
+
+The method then selects elements from the start argument, and up to (but not including) the end argument
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruits.slice(1, 3);
+
+JavaScript Sorting Arrays===================================================
+Sorting an Array-----------
+The sort() method sorts an array alphabetically
+Reversing an Array--------------
+The reverse() method reverses the elements in an array.
+You can use it to sort an array in descending order
+Numeric Sort----------------
+By default, the sort() function sorts values as strings.
+
+This works well for strings ("Apple" comes before "Banana").
+
+However, if numbers are sorted as strings, "25" is bigger than "100", because "2" is bigger than "1".
+
+Because of this, the sort() method will produce incorrect result when sorting numbers.
+
+You can fix this by providing a compare function
+const points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return a - b});
+If the result is negative, a is sorted before b.
+
+If the result is positive, b is sorted before a.
+
+If the result is 0, no changes are done with the sort order of the two values.
+
+Find the Highest (or Lowest) Array Value===============
+There are no built-in functions for finding the max or min value in an array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
